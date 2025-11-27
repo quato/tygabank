@@ -153,4 +153,4 @@ $is_valid = $verifier->verify(
 
 ## License
 
-MIT
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
