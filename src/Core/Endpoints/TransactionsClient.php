@@ -22,6 +22,7 @@ final class TransactionsClient
     {
         $api_path = '/payout';
         $payload = $request->toPayload();
+        $payload['timestamp'] = (int) (microtime(true) * 1000);
         $headers = [
             'x-api-key' => $this->config->api_key,
             'x-api-hash' => $this->signer->sign($api_path, $payload),
@@ -38,6 +39,7 @@ final class TransactionsClient
         $api_path = '/payout/' . $payout_id . '/confirm';
         $payload = [
             'createdBy' => $created_by,
+            'timestamp' => (int) (microtime(true) * 1000),
         ];
         $headers = [
             'x-api-key' => $this->config->api_key,
