@@ -34,11 +34,12 @@ final class TransactionsClient
     }
 
     /** @return array<string,mixed> */
-    public function confirm(string $payout_id, string $created_by): array
+    public function confirm(string $payout_id, string $created_by, string $external_transaction_id): array
     {
         $api_path = '/payout/' . $payout_id . '/confirm';
         $payload = [
             'createdBy' => $created_by,
+            'externalTransactionId' => $external_transaction_id,
             'timestamp' => (int) (microtime(true) * 1000),
         ];
         $headers = [
@@ -52,11 +53,12 @@ final class TransactionsClient
     }
 
     /** @return array<string,mixed> */
-    public function cancel(string $payout_id, string $cancelled_by): array
+    public function cancel(string $payout_id, string $cancelled_by, string $external_transaction_id): array
     {
         $api_path = '/payout/' . $payout_id . '/cancel';
         $payload = [
             'cancelledBy' => $cancelled_by,
+            'externalTransactionId' => $external_transaction_id,
             'timestamp' => (int) (microtime(true) * 1000),
         ];
         $headers = [
